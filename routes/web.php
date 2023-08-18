@@ -33,9 +33,9 @@ Route::get('/', function () {
     // ]);
 
     //$user = User::where("id", 2)->first();
-    $user = User::find(3)->first();
+    $user = User::find(3);
     $user->update([
-       "email" => "lamiya@gmail.com"
+       "email" => "lamiiya@gmail.com"
     ]);
     dd($user);
 
