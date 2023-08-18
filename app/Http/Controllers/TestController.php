@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-//use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-  public function __invoke($page)
+  public function getAbout()
   {
-    return view('pages.' . $page);
+    return view('about');
   }
 }

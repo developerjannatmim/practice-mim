@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\TestController;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // fetch all users
+    //$users = User::all();
+    //$users = DB::select('select * from users');
+    // $users = DB::table('users')
+    // ->where('name', "fatema")
+    // ->where("id", 1)
+    // ->first();
+    
+    //create new user
+    // $user = DB::insert('insert into users (name,email,password) values (?,?,?)', [
+    //     "mim",
+    //     "mim@gmail.com",
+    //     "123",
+    // ]);
+
+    //$user = User::where("id", 2)->first();
+    $user = User::find(3)->first();
+    $user->update([
+       "email" => "lamiya@gmail.com"
+    ]);
+    dd($user);
+
+    //return view('welcome');
 });
 
-Route::get('/{pages}', [TestController::class])->name('page')->where('pages', 'about|contact|terms');
+Route::get('about', [TestController::class, "getAbout"])->name('about');
